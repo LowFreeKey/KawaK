@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<html>
+<!--- Index will collect 2 serpate bits data. One will be the student's E-mail 
+ The other will be the student's draft submission --> 
+  <head>
+    <meta charset="utf-8">
+    <title>KawaK</title>
+    <link href="https://releases.transloadit.com/uppy/v1.26.1/uppy.min.css" rel="stylesheet">
+  <h1>Feedback for All</h1>
+  </head>
+  <body>
+<!-- Section which takes user input via plain HTML copy paste. to then store 
+in server via AJAX -->   
+
+
+<!-- Uppy.io JS Script which allows user to submit essay via traditonial 
+    submission styles .doc desktop dropbox etc..  -->
+    <script src="review.js"></script>
+    <div id="drag-drop-area"></div>
+
+    <script src="https://releases.transloadit.com/uppy/v1.26.1/uppy.min.js"></script>
+    <script>
+      var uppy = Uppy.Core()
+        .use(Uppy.Dashboard, {
+          inline: true,
+          target: '#drag-drop-area'
+        })
+        .use(Uppy.Tus, {endpoint: 'https://tusd.tusdemo.net/files/'})
+
+      uppy.on('complete', (result) => {
+        console.log('Upload complete! We’ve uploaded these files:', result.successful)
+      })
+    </script>
+<!-- Asking user for their E-Mail so that it may be stored and called 
+to serve as a notication when the feedback is provided.-->
+  </body>
+</html>
